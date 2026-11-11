@@ -18,7 +18,7 @@ import com.rita.markethub.ui.screens.onboarding.OnboardingScreen3
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUT_HOME
+    startDestination: String = ROUT_HOME //this decides which screen comes first.
 ) {
 
     NavHost(
@@ -35,7 +35,7 @@ fun AppNavHost(
         }
 
         composable(ROUT_REGISTRATION) {
-            RegisterScreen(navController)
+            RegisterScreen(navController) //this is the function name of the screen file
         }
 
         composable(ROUT_ONBOARDING1) {
