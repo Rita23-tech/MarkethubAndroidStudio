@@ -58,5 +58,8 @@ dependencies {
     implementation("androidx.navigation:navigation-runtime-ktx:2.10.2")
     implementation("androidx.navigation:navigation-compose:2.10.2")
 
+    //icons - dependency that allows us to use Icons
+    implementation("androidx.compose.material:material-icons-core:1.7.8")
+
 
 }
