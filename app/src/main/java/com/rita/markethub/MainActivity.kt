@@ -20,7 +20,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
 
-            AppNavHost()
+            AppNavHost() //this is calling the function app nav host and
+            //linking it so it can be previewed.
 
         }
     }

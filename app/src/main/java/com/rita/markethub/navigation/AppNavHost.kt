@@ -18,7 +18,7 @@ import com.rita.markethub.ui.screens.onboarding.OnboardingScreen3
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUT_HOME //this decides which screen comes first.
+    startDestination: String = ROUT_ONBOARDING1 //this decides which screen comes first.
 ) {
 
     NavHost(
