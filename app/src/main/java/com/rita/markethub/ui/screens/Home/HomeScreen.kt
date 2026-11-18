@@ -4,6 +4,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.ShoppingCart
@@ -19,6 +22,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.rita.markethub.navigation.ROUT_ONBOARDING1
+import com.rita.markethub.navigation.ROUT_ONBOARDING2
+import com.rita.markethub.navigation.ROUT_ONBOARDING3
 
 //this first line of code just shows location/path. In android we dont use forward slash/
 
@@ -43,14 +49,20 @@ fun HomeScreen(navController: NavController){
             },
             //icons at the end in a top app bar are called actions
             actions = {
+
+
                 IconButton(onClick = { }) {
                     Icon(imageVector = Icons.Default.ShoppingCart, contentDescription = "a shopping cart")
                 }
                 IconButton(onClick = { }) {
                     Icon(imageVector = Icons.Default.Notifications, contentDescription = "Notification place")
                 }
-                IconButton(onClick = { }) {
+                IconButton(onClick = { navController.navigate(ROUT_ONBOARDING3) }) {
                     Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "To check your account")
+                }
+
+                IconButton(onClick = { navController.navigate(ROUT_ONBOARDING1) }) {
+                    Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "For going back to initial page")
                 }
             }, //b4 u move to the next property, PUT A COMMA
 

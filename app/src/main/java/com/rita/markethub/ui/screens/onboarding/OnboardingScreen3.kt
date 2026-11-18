@@ -4,7 +4,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Share
@@ -21,6 +23,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.rita.markethub.navigation.ROUT_HOME
+import com.rita.markethub.navigation.ROUT_ONBOARDING1
+import com.rita.markethub.navigation.ROUT_ONBOARDING2
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,8 +54,12 @@ fun OnboardingScreen3(navController: NavController){
                 IconButton(onClick = { }) {
                     Icon(imageVector = Icons.Default.Share, contentDescription = "sharing place")
                 }
-                IconButton(onClick = { }) {
-                    Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "To check your account")
+                IconButton(onClick = { navController.navigate(ROUT_HOME) }) {
+                    Icon(imageVector = Icons.Default.Home, contentDescription = "To go to home")
+                }
+
+                IconButton(onClick = { navController.navigate(ROUT_ONBOARDING1) }) {
+                    Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "for going back to initial page")
                 }
             }, //b4 u move to the next property, PUT A COMMA
 

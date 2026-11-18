@@ -24,6 +24,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.rita.markethub.R
+import com.rita.markethub.navigation.ROUT_HOME
+import com.rita.markethub.navigation.ROUT_ONBOARDING2
 
 
 @Composable //composable functions means we are going to have other functions in it
@@ -57,7 +59,8 @@ fun OnboardingScreen2(navController: NavController){
         Spacer(modifier = Modifier.height(10.dp)) //used to create spaces
 
         Button(
-            onClick = {},
+            
+            onClick = { navController.navigate(ROUT_HOME)},
             colors = ButtonDefaults.buttonColors(Color.Unspecified),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.width(250.dp),
