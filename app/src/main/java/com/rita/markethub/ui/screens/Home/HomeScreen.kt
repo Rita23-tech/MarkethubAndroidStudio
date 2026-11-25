@@ -1,7 +1,16 @@
 package com.rita.markethub.ui.screens.Home
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.ArrowBack
@@ -18,10 +27,15 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.rita.markethub.R
 import com.rita.markethub.navigation.ROUT_ONBOARDING1
 import com.rita.markethub.navigation.ROUT_ONBOARDING2
 import com.rita.markethub.navigation.ROUT_ONBOARDING3
@@ -35,7 +49,7 @@ fun HomeScreen(navController: NavController){
     //first function is for the UI
     //HomeScreen is the name of the function
     Column( //here we pass the styles. This is the white screen
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
 
     ) {
         //Top app bar
@@ -74,9 +88,48 @@ fun HomeScreen(navController: NavController){
                 titleContentColor = Color.White, //the title of the top nav bar
                 actionIconContentColor = Color.Cyan
             )
+        ) //end of top app bar
 
+        Spacer(modifier = Modifier.height(10.dp)) //used to create spaces
+        //ROW - side by side
+        Row(
+            modifier = Modifier.horizontalScroll(rememberScrollState())
+        ) {
 
-        )
+            Image( //how we put image in android studio
+                painter = painterResource(R.drawable.img),
+                contentDescription =  "This is a product",
+                modifier = Modifier.height(200.dp).width(130.dp).clip(shape = RoundedCornerShape(10.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Spacer(modifier = Modifier.width(10.dp)) //used to create spaces
+
+            Image( //how we put image in android studio
+                painter = painterResource(R.drawable.img_2),
+                contentDescription =  "This is a product",
+                modifier = Modifier.height(200.dp).width(130.dp).clip(shape = RoundedCornerShape(10.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Spacer(modifier = Modifier.width(10.dp)) //used to create spaces
+
+            Image( //how we put image in android studio
+                painter = painterResource(R.drawable.img_3),
+                contentDescription =  "This is a product",
+                modifier = Modifier.height(200.dp).width(130.dp).clip(shape = RoundedCornerShape(10.dp)),
+                contentScale = ContentScale.Crop
+            )
+            Spacer(modifier = Modifier.width(10.dp))
+
+            Image( //how we put image in android studio
+                painter = painterResource(R.drawable.img_4),
+                contentDescription =  "This is a product",
+                modifier = Modifier.height(200.dp).width(130.dp).clip(shape = RoundedCornerShape(10.dp)),
+                contentScale = ContentScale.Crop
+            )
+
+        }
+
+        //end of row layout
 
 
 

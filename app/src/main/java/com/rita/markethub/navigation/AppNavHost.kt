@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.rita.markethub.ui.screens.Home.HomeScreen
 import com.rita.markethub.ui.screens.authentication.LoginScreen
 import com.rita.markethub.ui.screens.authentication.RegisterScreen
+import com.rita.markethub.ui.screens.intent.IntentScreen
 import com.rita.markethub.ui.screens.onboarding.OnboardingScreen1
 import com.rita.markethub.ui.screens.onboarding.OnboardingScreen2
 import com.rita.markethub.ui.screens.onboarding.OnboardingScreen3
@@ -48,6 +49,10 @@ fun AppNavHost(
 
         composable(ROUT_ONBOARDING3) {
             OnboardingScreen3(navController)
+        }
+
+        composable(ROUT_INTENT) {
+            IntentScreen(navController)
         }
 
     }
