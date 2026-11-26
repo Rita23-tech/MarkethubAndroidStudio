@@ -13,13 +13,15 @@ import com.rita.markethub.ui.screens.intent.IntentScreen
 import com.rita.markethub.ui.screens.onboarding.OnboardingScreen1
 import com.rita.markethub.ui.screens.onboarding.OnboardingScreen2
 import com.rita.markethub.ui.screens.onboarding.OnboardingScreen3
+import com.rita.markethub.ui.screens.scafold.ScaffoldScreen
+import com.rita.markethub.ui.screens.splash.SplashScreen
 
 
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUT_ONBOARDING1 //this decides which screen comes first.
+    startDestination: String = ROUT_SPLASH //this decides which screen comes first.
 ) {
 
     NavHost(
@@ -53,6 +55,14 @@ fun AppNavHost(
 
         composable(ROUT_INTENT) {
             IntentScreen(navController)
+        }
+
+        composable(ROUT_SPLASH) {
+            SplashScreen(navController)
+        }
+
+        composable(ROUT_SCAFFOLD) {
+            ScaffoldScreen(navController)
         }
 
     }

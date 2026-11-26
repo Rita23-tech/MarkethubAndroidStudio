@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.rita.markethub.R
+import com.rita.markethub.navigation.ROUT_INTENT
 import com.rita.markethub.navigation.ROUT_ONBOARDING1
 import com.rita.markethub.navigation.ROUT_ONBOARDING2
 import com.rita.markethub.navigation.ROUT_ONBOARDING3
@@ -71,7 +72,7 @@ fun HomeScreen(navController: NavController){
                 IconButton(onClick = { }) {
                     Icon(imageVector = Icons.Default.Notifications, contentDescription = "Notification place")
                 }
-                IconButton(onClick = { navController.navigate(ROUT_ONBOARDING3) }) {
+                IconButton(onClick = { navController.navigate(ROUT_INTENT) }) {
                     Icon(imageVector = Icons.Default.AccountCircle, contentDescription = "To check your account")
                 }
 

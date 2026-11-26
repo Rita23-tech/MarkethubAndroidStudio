@@ -60,7 +60,7 @@ fun OnboardingScreen2(navController: NavController){
 
         Button(
             
-            onClick = { navController.navigate(ROUT_HOME)},
+            onClick = { navController.navigate(ROUT_HOME)}, //to go to the home screen
             colors = ButtonDefaults.buttonColors(Color.Unspecified),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.width(250.dp),

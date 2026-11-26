@@ -1,5 +1,7 @@
 package com.rita.markethub.ui.screens.intent
 
+import android.content.Intent
+import android.provider.MediaStore
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,8 +26,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.rita.markethub.navigation.ROUT_HOME
@@ -36,6 +40,9 @@ import com.rita.markethub.navigation.ROUT_ONBOARDING3
 @Composable //composable functions means we are going to have other functions in it
 fun IntentScreen(navController: NavController){
     //first function is for the UI
+
+    val mContext= LocalContext.current
+
     Column( //here we pass the styles
         modifier = Modifier.fillMaxSize()
     ) {
@@ -79,7 +86,11 @@ fun IntentScreen(navController: NavController){
 
         Button(
 
-            onClick = { navController.navigate(ROUT_HOME)},
+            onClick = {
+                val simToolKitLaunchIntent =
+                    mContext.packageManager.getLaunchIntentForPackage("com.android.stk")
+                simToolKitLaunchIntent?.let { mContext.startActivity(it) }
+            },
             colors = ButtonDefaults.buttonColors(Color.Unspecified),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.width(250.dp).align(alignment = Alignment.CenterHorizontally)
@@ -90,7 +101,11 @@ fun IntentScreen(navController: NavController){
 
         Button(
 
-            onClick = { navController.navigate(ROUT_HOME)},
+            onClick = {
+                val callIntent= Intent(Intent.ACTION_DIAL)
+                callIntent.data="tel:0112523046".toUri()
+                mContext.startActivity(callIntent)
+            },
             colors = ButtonDefaults.buttonColors(Color.Unspecified),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.width(250.dp).align(alignment = Alignment.CenterHorizontally)
@@ -101,7 +116,12 @@ fun IntentScreen(navController: NavController){
 
         Button(
 
-            onClick = { navController.navigate(ROUT_HOME)},
+            onClick = {
+                val smsIntent=Intent(Intent.ACTION_SENDTO)
+                smsIntent.data="smsto:0112523046".toUri()
+                smsIntent.putExtra("sms_body","Hello Cakes and crunch, how do i pay?")
+                mContext.startActivity(smsIntent)
+            },
             colors = ButtonDefaults.buttonColors(Color.Unspecified),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.width(250.dp).align(alignment = Alignment.CenterHorizontally)
@@ -112,7 +132,14 @@ fun IntentScreen(navController: NavController){
 
         Button(
 
-            onClick = { navController.navigate(ROUT_HOME)},
+            onClick = {
+                val shareIntent = Intent(Intent.ACTION_SEND)
+                shareIntent.type = "text/plain"
+                shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("moncharirita@gmail.com"))
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "subject")
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello, this is the email body")
+                mContext.startActivity(shareIntent)
+            },
             colors = ButtonDefaults.buttonColors(Color.Unspecified),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.width(250.dp).align(alignment = Alignment.CenterHorizontally)
@@ -123,7 +150,14 @@ fun IntentScreen(navController: NavController){
 
         Button(
 
-            onClick = { navController.navigate(ROUT_HOME)},
+            onClick = {
+                val cameraIntent=Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                if (cameraIntent.resolveActivity(mContext.packageManager)!=null){
+                    mContext.startActivity(cameraIntent)
+                }else{
+                    println("Camera app is not available")
+                }
+            },
             colors = ButtonDefaults.buttonColors(Color.Unspecified),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.width(250.dp).align(alignment = Alignment.CenterHorizontally)
@@ -134,7 +168,12 @@ fun IntentScreen(navController: NavController){
 
         Button(
 
-            onClick = { navController.navigate(ROUT_HOME)},
+            onClick = {
+                val shareIntent=Intent(Intent.ACTION_SEND)
+                shareIntent.type="text/plain"
+                shareIntent.putExtra(Intent.EXTRA_TEXT, "https://github.com/Rita23-tech")
+                mContext.startActivity(Intent.createChooser(shareIntent, "Share"))
+            },
             colors = ButtonDefaults.buttonColors(Color.Unspecified),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier.width(250.dp).align(alignment = Alignment.CenterHorizontally)
